@@ -8,3 +8,14 @@ Feature: Insert Product using POST Api
     Examples:
     | ProductTitle |
     |    xxx56123       |
+
+  Scenario: Pass JSON to step
+    Given the following JSON data:
+    """
+    {
+        "test": "123",
+        "a": {
+            "b": 18
+        }
+    }
+    """

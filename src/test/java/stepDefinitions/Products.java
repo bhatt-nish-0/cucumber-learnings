@@ -3,6 +3,7 @@ package stepDefinitions;
 //import io.cucumber.cienvironment.internal.com.eclipsesource.json.JsonObject;
 //import io.cucumber.cienvironment.internal.com.eclipsesource.json.JsonObject;
 //import io.cucumber.cienvironment.internal.com.eclipsesource.json.JsonObject;
+import io.cucumber.core.internal.com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.simple.JSONObject;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -83,5 +84,13 @@ public class Products {
         ResponseBody body = response1.getBody();
         System.out.println(response1.getStatusLine());
         System.out.println(body.asString());
+    }
+
+    @Given("the following JSON data:")
+    public void theFollowingJsonData(String json) throws Exception {
+        ObjectMapper objectMapper = new ObjectMapper();
+        MyPojo pojo = objectMapper.readValue(json, MyPojo.class);
+        System.out.println("Test: " + pojo.getTest());
+        System.out.println("A.B: " + pojo.getA().getB());
     }
 }
