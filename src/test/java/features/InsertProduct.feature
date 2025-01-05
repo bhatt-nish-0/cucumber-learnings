@@ -21,6 +21,6 @@ Feature: Insert Product using POST Api
     }
     """
     Examples:
-    | test    | b  | phi  |
-    | 123     | 3  |  x   |
+    | test    | b  | phi    |
+    | 123     | 3  |  x     |
     | 223     | 5  |  y2k   |
