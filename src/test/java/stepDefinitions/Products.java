@@ -92,5 +92,6 @@ public class Products {
         MyPojo pojo = objectMapper.readValue(json, MyPojo.class);
         System.out.println("Test: " + pojo.getTest());
         System.out.println("A.B: " + pojo.getA().getB());
+        System.out.println("C:" + pojo.getC());
     }
 }

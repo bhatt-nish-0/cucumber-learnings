@@ -4,6 +4,16 @@ public class MyPojo {
     private String test;
     private A a;
 
+    private String c;
+
+    public String getC() {
+        return c;
+    }
+
+    public void setC(String c) {
+        this.c = c;
+    }
+
     public String getTest() {
         return test;
     }

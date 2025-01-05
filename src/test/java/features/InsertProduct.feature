@@ -9,13 +9,18 @@ Feature: Insert Product using POST Api
     | ProductTitle |
     |    xxx56123       |
 
-  Scenario: Pass JSON to step
+  Scenario Outline: Pass JSON to step
     Given the following JSON data:
     """
     {
-        "test": "123",
+        "test": "<test>",
         "a": {
-            "b": 18
-        }
+            "b": <b>
+        },
+        "c" : "<phi>"
     }
     """
+    Examples:
+    | test    | b  | phi  |
+    | 123     | 3  |  x   |
+    | 223     | 5  |  y2k   |
