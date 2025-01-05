@@ -7,4 +7,4 @@ Feature: Insert Product using POST Api
     Then  I receive the response code as 200
     Examples:
     | ProductTitle |
-    |    xxx       |
+    |    xxx56123       |
