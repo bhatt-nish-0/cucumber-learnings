@@ -30,5 +30,26 @@ Feature: Get All Products From the API
     | <jsonActual> |
     Then nothing
     Examples:
-    |   jsonActual                                                              |
-    |  {"a":3,"b": {"c": [{"peepee":"7","plu":87}, {"peepee":"9","plu":93}, {"peepee":"65","plu":967}]}}   |
+    |   jsonActual                                                                                                        |
+    |  {"a":3,"b": {"c": [{"peepee":"7","plu":87}, {"peepee":"9","plu":93}, {"peepee":"65","plu":967}]}}                  |
+    |  {"a":3,"b": {"c": [{"peepee":"7","plu":87}, {"peepee":"9","plu":93}, {"peepee":"65","plu":967,"chuman":"876"}]}}   |
+
+  Scenario Outline: this is a test 3
+    Given some params what bro?
+    | mad                                      |
+    | <animal>                                 |
+    Then nothing
+    Examples:
+    | animal                                   |
+    |  [{"abc":67},{"abc":42},{"abc":90}]      |
+    |  [{"abc":37},{"abc":49},{"abc":92}]      |
+
+  Scenario Outline: this is a test 4
+    Given some params what bro do?
+    | agni                                     |
+    | <cat>                                    |
+    Then nothing
+    Examples:
+    | cat                                                       |
+    | { "c":298, "d":"deer" , "e" : {"f": {"i.o.popo":23}}}     |
+    | { "c":299, "d":"deery" , "e" : {"f": {"i.o.popo":234}}}   |

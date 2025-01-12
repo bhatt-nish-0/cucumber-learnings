@@ -3,6 +3,7 @@ package stepDefinitions;
 //import io.cucumber.cienvironment.internal.com.eclipsesource.json.JsonObject;
 //import io.cucumber.cienvironment.internal.com.eclipsesource.json.JsonObject;
 //import io.cucumber.cienvironment.internal.com.eclipsesource.json.JsonObject;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import groovy.json.JsonToken;
@@ -160,9 +161,108 @@ public class Products {
             Keef keef = list.get(i);
             System.out.println(keef.getPeepee());
             System.out.println(keef.getPlu());
+            if (keef.getChuman() != null) {
+                System.out.println("oye!");
+                System.out.println(keef.getChuman());
+            }else {
+                System.out.println("null bro!");
+            }
             System.out.println("------------------");
         }
 
+    }
+
+    @Given("some params what bro?")
+    public void someParamsWhatBro(List<Map<String,String>> y) throws JsonProcessingException {
+        System.out.println(y);
+        Map<String,String> yy = y.get(0);
+        String doggy = yy.get("mad");
+        System.out.println("printing mad");
+        System.out.println(doggy);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        List<C> cs = objectMapper.readValue(doggy, new TypeReference<List<C>>() {
+        });
+
+        System.out.println("nish is finaly printing");
+        for (int i =0; i<cs.size(); i++) {
+            System.out.println(cs.get(i).getAbc());
+        }
+    }
+
+    @Given("some params what bro do?")
+    public void someParamsWhatBroDo(List<Map<String,String>> yer) throws JsonProcessingException {
+        System.out.println(yer);
+        System.out.println(yer.get(0));
+        System.out.println(yer.get(0).get("agni"));
+        String cat  =yer.get(0).get("agni");
+        System.out.println(cat);
+
+        Dichu dichu = new ObjectMapper().readValue(cat, new TypeReference<Dichu>() {
+        });
+
+        System.out.println("--------------------------");
+        System.out.println(dichu.getC());
+        System.out.println(dichu.getD());
+        Cichu c = dichu.getE();
+        Bichu f = c.getF();
+        System.out.println(f.getKer());
+        System.out.println("--------------------------");
+    }
+}
+
+class Dichu {
+    private Cichu e;
+    private String d;
+    private long c;
+
+    public Cichu getE() {
+        return e;
+    }
+
+    public void setE(Cichu e) {
+        this.e = e;
+    }
+
+    public String getD() {
+        return d;
+    }
+
+    public void setD(String d) {
+        this.d = d;
+    }
+
+    public long getC() {
+        return c;
+    }
+
+    public void setC(long c) {
+        this.c = c;
+    }
+}
+
+class Cichu {
+    private Bichu f;
+
+    public Bichu getF() {
+        return f;
+    }
+
+    public void setF(Bichu f) {
+        this.f = f;
+    }
+}
+
+class Bichu {
+    @JsonProperty(value = "i.o.popo")
+    private String ker;
+
+    public String getKer() {
+        return ker;
+    }
+
+    public void setKer(String ker) {
+        this.ker = ker;
     }
 }
 
@@ -252,6 +352,16 @@ class Keef {
     private String peepee;
     private String plu;
 
+    private String chuman;
+
+    public String getChuman() {
+        return chuman;
+    }
+
+    public void setChuman(String chuman) {
+        this.chuman = chuman;
+    }
+
     public String getPeepee() {
         return peepee;
     }
@@ -266,5 +376,17 @@ class Keef {
 
     public void setPlu(String plu) {
         this.plu = plu;
+    }
+}
+
+class C {
+    private long abc;
+
+    public long getAbc() {
+        return abc;
+    }
+
+    public void setAbc(long abc) {
+        this.abc = abc;
     }
 }
