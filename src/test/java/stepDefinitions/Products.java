@@ -225,6 +225,14 @@ public class Products {
         List<Kundu> kundus = d.getKundus();
 
         for (int i =0; i<kundus.size(); i++) {
+            Kundu k = kundus.get(i);
+            String rrr = k.getKuy();
+            if (rrr == null) {
+                System.out.println("null bro here!");
+            }
+            if (rrr == "") {
+                System.out.println("empty string here!");
+            }
             System.out.println(kundus.get(i).getKuy());
         }
         System.out.println("------------------");

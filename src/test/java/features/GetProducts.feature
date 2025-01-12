@@ -63,4 +63,6 @@ Feature: Get All Products From the API
     |       dog                                                                  |
     |      {"c":234, "der": [{"kan":"pur"},{"kan":"cannes"}]}                    |
     |      {"c":272, "der": [{"kan":"pur"},{"kan":"cannes"} , {"kan":"ratlam"}]} |
+    |      {"c":272, "der": [{"kan":"pur"},{"kan":"cannes"} , {"kan":"ratlam"}, {"kan":null}]} |
+    |      {"c":272, "der": [{"kan":"pur"},{"kan":"cannes"} , {"kan":"ratlam"}, {"kan":""}]} |
 
