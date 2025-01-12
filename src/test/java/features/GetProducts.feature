@@ -23,3 +23,12 @@ Feature: Get All Products From the API
     |c | p | lo | qpd |
     |x | 3 | 7  | 4,9   |
     |y | 7 | 9  | 2,6   |
+
+  Scenario Outline:  this is a test 2
+    Given some params what?
+    | r            |
+    | <jsonActual> |
+    Then nothing
+    Examples:
+    |   jsonActual                                                              |
+    |  {"a":3,"b": {"c": [{"peepee":"7","plu":87}, {"peepee":"9","plu":93}, {"peepee":"65","plu":967}]}}   |

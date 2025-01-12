@@ -4,6 +4,7 @@ package stepDefinitions;
 //import io.cucumber.cienvironment.internal.com.eclipsesource.json.JsonObject;
 //import io.cucumber.cienvironment.internal.com.eclipsesource.json.JsonObject;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import groovy.json.JsonToken;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.cucumber.datatable.DataTable;
@@ -140,6 +141,29 @@ public class Products {
     public void nothing() {
         System.out.println("nothing");
     }
+
+    @Given("some params what?")
+    public void someParams(List<Map<String,String>> x) throws JsonProcessingException {
+        System.out.println("nish printing");
+        System.out.println(x.get(0).get("r"));
+
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        Beef b = objectMapper.readValue(x.get(0).get("r"),new TypeReference<Beef>(){});
+
+        System.out.println(b.getA());
+        Deef deef = b.getB();
+        List<Keef> list = deef.getC();
+
+        for (int i =0; i<list.size(); i++) {
+            System.out.println("------------------");
+            Keef keef = list.get(i);
+            System.out.println(keef.getPeepee());
+            System.out.println(keef.getPlu());
+            System.out.println("------------------");
+        }
+
+    }
 }
 
 class Test {
@@ -188,5 +212,59 @@ class Test {
                 ", bcd=" + bcd +
                 ", ord=" + ord +
                 '}';
+    }
+}
+
+class Beef {
+   private long a;
+   private Deef b;
+
+    public long getA() {
+        return a;
+    }
+
+    public void setA(long a) {
+        this.a = a;
+    }
+
+    public Deef getB() {
+        return b;
+    }
+
+    public void setB(Deef b) {
+        this.b = b;
+    }
+}
+
+class Deef {
+    private List<Keef> c;
+
+    public List<Keef> getC() {
+        return c;
+    }
+
+    public void setC(List<Keef> c) {
+        this.c = c;
+    }
+}
+
+class Keef {
+    private String peepee;
+    private String plu;
+
+    public String getPeepee() {
+        return peepee;
+    }
+
+    public void setPeepee(String peepee) {
+        this.peepee = peepee;
+    }
+
+    public String getPlu() {
+        return plu;
+    }
+
+    public void setPlu(String plu) {
+        this.plu = plu;
     }
 }
