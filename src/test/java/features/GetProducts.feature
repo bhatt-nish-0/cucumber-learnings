@@ -66,3 +66,14 @@ Feature: Get All Products From the API
     |      {"c":272, "der": [{"kan":"pur"},{"kan":"cannes"} , {"kan":"ratlam"}, {"kan":null}]} |
     |      {"c":272, "der": [{"kan":"pur"},{"kan":"cannes"} , {"kan":"ratlam"}, {"kan":""}]} |
 
+  Scenario Outline:  this is a test 6
+    Given some params what bro do doing all? with "<b>"
+    |                a                        |                b                 |
+    |               <a>                       |               <b>                |
+    Then nothing
+    Examples:
+    |           a                             |                b                 |
+    |   {"c":3,"x":"hehe"}                    |                APAC              |
+    |   {"c":7,"x":"yoyo"}                    |                EMEA              |
+    |   {"c":1,"x":"papa"}                    |                NAM               |
+

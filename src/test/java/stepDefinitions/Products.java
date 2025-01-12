@@ -140,7 +140,7 @@ public class Products {
 
     @Then("nothing")
     public void nothing() {
-        System.out.println("nothing");
+        //System.out.println("nothing");
     }
 
     @Given("some params what?")
@@ -236,6 +236,47 @@ public class Products {
             System.out.println(kundus.get(i).getKuy());
         }
         System.out.println("------------------");
+    }
+
+    @Given("some params what bro do doing all? with {string}")
+    public void someParamsWhatBroDoDoingAllWith(String arg0 , List<Map<String,String>> xxx) throws JsonProcessingException {
+
+        //System.out.println(arg0);
+        //System.out.println(xxx.get(0).get("a"));
+
+        String a = xxx.get(0).get("a");
+        Oppo oppo = new ObjectMapper().readValue(a, new TypeReference<Oppo>() {
+        });
+
+        int c =oppo.getC();
+
+        String x = oppo.getX();
+
+        //System.out.println(c);
+        //System.out.println(x);
+
+        System.out.println("the values are " + arg0 + "," + c + "," + x);
+    }
+}
+
+class Oppo {
+    private int c;
+    private String x;
+
+    public int getC() {
+        return c;
+    }
+
+    public void setC(int c) {
+        this.c = c;
+    }
+
+    public String getX() {
+        return x;
+    }
+
+    public void setX(String x) {
+        this.x = x;
     }
 }
 
