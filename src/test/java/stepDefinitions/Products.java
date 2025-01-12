@@ -19,8 +19,11 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
 import io.restassured.specification.RequestSpecification;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -256,6 +259,33 @@ public class Products {
         //System.out.println(x);
 
         System.out.println("the values are " + arg0 + "," + c + "," + x);
+    }
+
+    @Given("some params what bro do doing all? withu {string}")
+    public void someParamsWhatBroDoDoingAllWithu(String arg0, List<Map<String,String>> parameters) throws JsonProcessingException {
+        //System.out.println(arg0);
+        //System.out.println(parameters);
+        String k = parameters.get(0).get("q");
+        Junaid junaid = new ObjectMapper().readValue(k, new TypeReference<Junaid>() {
+        });
+        System.out.println(junaid.getC());
+        RestTemplate restTemplate = new RestTemplate();
+        Map<String,String> yri = new HashMap<>();
+        yri.put("akash",arg0);
+        ResponseEntity<String> stringResponseEntity = restTemplate.postForEntity("http://localhost:9087/testbrock/{akash}", junaid, String.class, yri);
+        System.out.println(stringResponseEntity.getBody());
+    }
+}
+
+class Junaid {
+    private String c;
+
+    public String getC() {
+        return c;
+    }
+
+    public void setC(String c) {
+        this.c = c;
     }
 }
 

@@ -77,3 +77,12 @@ Feature: Get All Products From the API
     |   {"c":7,"x":"yoyo"}                    |                EMEA              |
     |   {"c":1,"x":"papa"}                    |                NAM               |
 
+  Scenario Outline: this is a test 7
+    Given some params what bro do doing all? withu "<r>"
+    | q           | r           |
+    | <q>         | <r>         |
+    Then nothing
+    Examples:
+    | q                  |   r                     |
+    | {"c":"kirron kher"}|   WHAT DO U WANT?       |
+
