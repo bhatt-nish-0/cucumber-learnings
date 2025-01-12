@@ -3,7 +3,10 @@ package stepDefinitions;
 //import io.cucumber.cienvironment.internal.com.eclipsesource.json.JsonObject;
 //import io.cucumber.cienvironment.internal.com.eclipsesource.json.JsonObject;
 //import io.cucumber.cienvironment.internal.com.eclipsesource.json.JsonObject;
-import io.cucumber.core.internal.com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import groovy.json.JsonToken;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.cucumber.datatable.DataTable;
 import org.json.simple.JSONObject;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -14,6 +17,12 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
 import io.restassured.specification.RequestSpecification;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 import static org.junit.Assert.*;
 public class Products {
 
@@ -93,5 +102,91 @@ public class Products {
         System.out.println("Test: " + pojo.getTest());
         System.out.println("A.B: " + pojo.getA().getB());
         System.out.println("C:" + pojo.getC());
+    }
+
+    @Given("some parameters")
+    public void someParameters(List<Map<String,String>> x) throws JsonProcessingException {
+
+        //System.out.println(x);
+        //System.out.println(x.get(0));
+        Map<String, String> data = x.get(0);
+
+        String a1 = data.get("a");
+        String a2 = data.get("acd");
+        String a3 = data.get("bcd");
+        String a4 = data.get("ord");
+
+        System.out.println(a1);
+        System.out.println(a2);
+        System.out.println(a3);
+        System.out.println(a4);
+
+        Test t = new Test();
+        t.setA(a1);
+        t.setAcd(a2);
+        t.setBcd(Integer.parseInt(a3));
+        List<String> x2 = Arrays.asList(a4.split(","));
+        t.setOrd(x2);
+
+        System.out.println("---------------------");
+        System.out.println(t);
+        System.out.println("---------------------");
+
+    }
+
+
+
+    @Then("nothing")
+    public void nothing() {
+        System.out.println("nothing");
+    }
+}
+
+class Test {
+    private String a;
+    private String acd;
+    private int bcd;
+    private List<String> ord;
+
+    public String getA() {
+        return a;
+    }
+
+    public void setA(String a) {
+        this.a = a;
+    }
+
+    public String getAcd() {
+        return acd;
+    }
+
+    public void setAcd(String acd) {
+        this.acd = acd;
+    }
+
+    public int getBcd() {
+        return bcd;
+    }
+
+    public void setBcd(int bcd) {
+        this.bcd = bcd;
+    }
+
+    public List<String> getOrd() {
+        return ord;
+    }
+
+    public void setOrd(List<String> ord) {
+        this.ord = ord;
+    }
+
+    @Override
+    public String toString() {
+        return "Test{" +
+                "a='" + a + '\'' +
+                ", acd='" + acd + '\'' +
+                ", bcd=" + bcd +
+                ", ord=" + ord +
+                '}';
     }
 }

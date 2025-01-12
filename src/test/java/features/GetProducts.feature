@@ -12,3 +12,14 @@ Feature: Get All Products From the API
     Examples:
       | FirstProductRate |
       | 3.9              |
+
+  Scenario Outline: this is a test
+    Given some parameters
+    | a   | acd | bcd | ord   |
+    | <c> | <p> | <lo>| <qpd> |
+    Then nothing
+
+    Examples:
+    |c | p | lo | qpd |
+    |x | 3 | 7  | 4,9   |
+    |y | 7 | 9  | 2,6   |
