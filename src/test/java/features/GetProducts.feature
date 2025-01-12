@@ -53,3 +53,14 @@ Feature: Get All Products From the API
     | cat                                                       |
     | { "c":298, "d":"deer" , "e" : {"f": {"i.o.popo":23}}}     |
     | { "c":299, "d":"deery" , "e" : {"f": {"i.o.popo":234}}}   |
+
+  Scenario Outline: this is a test 5
+    Given some params what bro do doing?
+    | aaa                                     |
+    | <dog>                                   |
+    Then nothing
+    Examples:
+    |       dog                                                                  |
+    |      {"c":234, "der": [{"kan":"pur"},{"kan":"cannes"}]}                    |
+    |      {"c":272, "der": [{"kan":"pur"},{"kan":"cannes"} , {"kan":"ratlam"}]} |
+

@@ -209,6 +209,61 @@ public class Products {
         System.out.println(f.getKer());
         System.out.println("--------------------------");
     }
+
+    @Given("some params what bro do doing?")
+    public void someParamsWhatBroDoDoing(List<Map<String,String>> yer) throws JsonProcessingException {
+        System.out.println(yer);
+        String yyy = yer.get(0).get("aaa");
+        System.out.println(yyy);
+
+        Adoro d = new ObjectMapper().readValue(yyy, new TypeReference<Adoro>() {
+        });
+
+        System.out.println("------------------");
+
+        System.out.println(d.getC());
+        List<Kundu> kundus = d.getKundus();
+
+        for (int i =0; i<kundus.size(); i++) {
+            System.out.println(kundus.get(i).getKuy());
+        }
+        System.out.println("------------------");
+    }
+}
+
+class Adoro {
+    private int c;
+    @JsonProperty(value  = "der")
+    private List<Kundu> kundus;
+
+    public int getC() {
+        return c;
+    }
+
+    public void setC(int c) {
+        this.c = c;
+    }
+
+    public List<Kundu> getKundus() {
+        return kundus;
+    }
+
+    public void setKundus(List<Kundu> kundus) {
+        this.kundus = kundus;
+    }
+}
+
+class Kundu {
+    @JsonProperty(value = "kan")
+    private String kuy;
+
+    public String getKuy() {
+        return kuy;
+    }
+
+    public void setKuy(String kuy) {
+        this.kuy = kuy;
+    }
 }
 
 class Dichu {
